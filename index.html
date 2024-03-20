@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="script.js"></script>
+    <header>"NOTRE TITRE"</header>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API - Free Cocktail</title>
@@ -15,34 +17,10 @@
         } */
     </style>
   </head>
+
   <body>
+    <button type="button">VODKA</button>
+
     <div id="alcool"></div>
-
-    <script>
-      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka") //fetch = chercher / ici on va chercher la donnée
-        .then((response) => response.json()) //on va chercher la réponse et on le transforme en json
-        .then((data) => {
-          console.log(data.drinks);
-          data.drinks.forEach((alcool) => {
-            //for each va chercher pour tout lister (boucle)
-            const alcoolDiv = document.createElement("div");
-            console.log(alcool);
-            alcoolDiv.classList.add("alcool");
-            alcoolDiv.innerHTML = `
-                    
-                    <h1>${alcool.strDrink}</h1>
-                    <img src="${alcool.strDrinkThumb}" />
-                   <h2>${alcool.strIngredient1}</h2>
-                   <h2>${alcool.strIngredient2}</h2>
-                   <h3>${alcool.strIngredient3}</h3>
-                   <p>${alcool.strMeasure1}</p>
-                   
-
-                
-                    `;
-            document.getElementById("alcool").appendChild(alcoolDiv);
-          });
-        });
-    </script>
   </body>
 </html>
