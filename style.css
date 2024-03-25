@@ -1,6 +1,30 @@
+body {
+  font-family: "Merienda";
+  background-color: black;
+}
+
+h1 {
+  font-size: 60px;
+  color: white;
+  background-color: black;
+}
+h2 {
+  color: white;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+
+p {
+  color: #dfdbec;
+}
+
 .button1 {
+  font-family: "Merienda";
   border: 0;
-  background: transparent;
+  background: black;
   color: white;
   position: relative;
   overflow: hidden;
@@ -17,7 +41,7 @@
   content: "";
   width: 400px;
   height: 400px;
-  background: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
+  background: linear-gradient(225deg, #b7b8f0 0%, #b1dbf2 50%, #dbb6f0 100%);
   position: absolute;
   top: -50px;
   left: -100px;
@@ -33,4 +57,45 @@
   transform: translate(0, -6px);
   box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
     -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}
+
+.card {
+  margin-top: 18px;
+  gap: 12px;
+  justify-content: start;
+  align-items: center;
+  display: flex;
+  border: solid 2px;
+  border-color: #b7b8f0;
+  border-radius: 20px;
+  width: 600px;
+  padding: 12px;
+  height: fit-content;
+  background-color: rgb(41, 38, 38);
+}
+
+.containerInformation {
+  display: flex;
+  gap: 12px;
+}
+
+.containerBouton {
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerH1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cocktail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
 }

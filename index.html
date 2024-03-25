@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="./script.js"></script>
-    <header>"NOTRE TITRE"</header>
+    <header>Projet collectif 2</header>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API - Free Cocktail</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./format.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <button class="button1">VODKA</button>
-    <button class="button1">GIN</button>
-    <button class="button1">RUM</button>
-    <button class="button1">WHISHY</button>
+    <div class="containerH1">
+      <h1>datAlcoolique groupe MMC</h1>
+    </div>
+    <div class="containerBouton">
+      <button class="button1" onclick="recupereliste('VODKA')">VODKA</button>
+      <button class="button1" onclick="recupereliste('GIN')">GIN</button>
+      <button class="button1" onclick="recupereliste('RUM')">RUM</button>
+      <button class="button1" onclick="recupereliste('TEQUILA')">
+        TEQUILA
+      </button>
+    </div>
 
     <div id="cocktail"></div>
+    <script src="./script.js"></script>
+    <div id="page"></div>
   </body>
 </html>
