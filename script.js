@@ -1,15 +1,80 @@
+const getCocktailByIngredient = async (ingredient) => {
+  const response = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+  );
+  const dataToJSon = await response.json();
+  const { drinks } = dataToJSon;
+  return drinks.map((drink) => drink.idDrink);
+};
+
+const fetchCocktails = async (alcool, page = 1) => {
+  const perPage = 12; // Nombre de cocktails par page
+  const start = (page - 1) * perPage;
+  const end = start + perPage;
+
+  document.getElementById("cocktail").innerHTML = "";
+  const cocktailIds = await getCocktailByIngredient(alcool);
+
+  if (cocktailIds.length === 0) {
+    return;
+  }
+
+  const currentPageCocktails = cocktailIds.slice(start, end);
+  for (let id of currentPageCocktails) {
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, 100)
+    );
+
+    recupereliste(id);
+  }
+
+  // Ajout de la pagination
+  const totalPages = Math.ceil(cocktailIds.length / perPage);
+  addPaginationButtons(page, totalPages, alcool);
+};
+
+function addPaginationButtons(currentPage, totalPages, alcool) {
+  const paginationContainer = document.getElementById("pagination");
+  paginationContainer.innerHTML = "";
+
+  if (totalPages <= 1) {
+    return;
+  }
+
+  if (currentPage > 1) {
+    const previousButton = document.createElement("button");
+    previousButton.innerText = "Précédent";
+    previousButton.addEventListener("click", () => {
+      if (currentPage > 1) {
+        fetchCocktails(alcool, currentPage - 1);
+      }
+    });
+    paginationContainer.appendChild(previousButton);
+  }
+  
+  if (currentPage < totalPages) {
+    const nextButton = document.createElement("button");
+    nextButton.innerText = "Suivant";
+    nextButton.addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        fetchCocktails(alcool, currentPage + 1);
+      }
+    });
+    paginationContainer.appendChild(nextButton);
+  }
+}
+
 function recupereliste(id) {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id) //fetch = chercher / ici on va chercher la donnée
-    .then((response) => response.json()) //on va chercher la réponse et on le transforme en json
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id)
+    .then((response) => response.json())
     .then((data) => {
       const { drinks } = data;
-
-      // document.getElementById("cocktail").innerHTML = "";
 
       drinks.sort((a, b) => a.strDrink.localeCompare(b.strDrink));
 
       drinks.forEach((cocktail) => {
-        //for each va chercher pour tout lister (boucle)
         const alcoolDiv = document.createElement("div");
         alcoolDiv.classList.add("card");
         const nomCocktail = cocktail.strDrink;
@@ -57,46 +122,3 @@ function recupereliste(id) {
       });
     });
 }
-//dans index.html, dans la balise boutton rajouter une propriété onClick ="fonction fléclée" (celle dans script.js)
-// onclick="() => toto(alcool en fonction du boutton)"
-
-//1Creer une fonction qui permet de récupèrer la liste de l'api:
-//https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin
-//Et qui prend en params l'ingrédient.
-//Cette fonction retourne un tableau d'id.
-
-const getCocktailByIngredient = async (ingredient) => {
-  const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
-  );
-  const dataToJSon = await response.json();
-  const { drinks } = dataToJSon;
-
-  //Drinks est un array d'objet.
-  return drinks.map((drink) => drink.idDrink);
-};
-
-//Créer une fonction qui regroupe les 2;
-const fetchCocktails = async (indregient) => {
-  document.getElementById("cocktail").innerHTML = "";
-  const tableauIds = await getCocktailByIngredient(indregient);
-
-  console.log("tableauIds:", tableauIds);
-
-  //Si le tableau est vide. Je fais rien.
-  if (tableauIds.length === 0) {
-    return;
-  }
-
-  for (let i = 0; i <= tableauIds.length; i++) {
-    const id = tableauIds[i];
-
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, 500)
-    );
-
-    recupereliste(id);
-  }
-};

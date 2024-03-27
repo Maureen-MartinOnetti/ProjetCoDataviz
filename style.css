@@ -73,12 +73,11 @@ p {
   width: 600px;
   padding: 12px;
   height: fit-content;
-  
-;
   background-color: rgb(41, 38, 38);
 }
 
 .containerInformation {
+  margin-left: 12px;
   display: flex;
   gap: 12px;
 }
@@ -102,4 +101,31 @@ p {
   gap: 30px;
   align-items: center;
   justify-content: center;
+}
+
+#pagination {
+  margin-top: 20px;
+  justify-content: start;
+  align-items: center;
+  display: flex;
+}
+
+#pagination button {
+  background: transparent;
+  border-color: #b7b8f0;
+  border-radius: 20px;
+  border: solid 2px;
+  padding: 12px 18px;
+  color: #b7b8f0;
+  background-color:transparent;
+  margin: 10px 10px;
+  font-size: 18px;
+  gap: 12px;
+}
+
+
+#chart{
+  width: 500px;
+  height: 300px;
+  background-color:#b7b8f0;
 }
