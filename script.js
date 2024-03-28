@@ -21,11 +21,7 @@ const fetchCocktails = async (alcool, page = 1) => {
 
   const currentPageCocktails = cocktailIds.slice(start, end);
   for (let id of currentPageCocktails) {
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, 100)
-    );
+
 
     recupereliste(id);
   }
@@ -53,7 +49,7 @@ function addPaginationButtons(currentPage, totalPages, alcool) {
     });
     paginationContainer.appendChild(previousButton);
   }
-  
+
   if (currentPage < totalPages) {
     const nextButton = document.createElement("button");
     nextButton.innerText = "Suivant";

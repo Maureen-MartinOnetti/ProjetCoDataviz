@@ -38,7 +38,7 @@ getAllAlcools().then(() => {
 });
 
 function createGraph(alcoolData) {
-  const width = 400;
+  const width = 600;
   const height = 300;
   const margin = { top: 20, bottom: 20, left: 10, right: 10 };
 
@@ -69,14 +69,6 @@ function createGraph(alcoolData) {
     .attr("height", height);
 
   svg
-    .append("g")
-    .attr("class", "axis-x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale))
-    .selectAll("text")
-    .style("text-anchor", "end");
-
-  svg
     .selectAll(".bar")
     .data(alcoolData)
     .enter()
@@ -86,4 +78,5 @@ function createGraph(alcoolData) {
     .attr("y", (d) => yScale(d.count))
     .attr("width", xScale.bandwidth())
     .attr("height", (d) => height - margin.bottom - yScale(d.count));
-}
+
+  }

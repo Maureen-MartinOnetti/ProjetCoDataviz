@@ -18,13 +18,11 @@
   </head>
 
   <body>
-      <audio controls loop id="myAudio">
-        <source src="Rooftop Lounge Cool Music.mp3" type="audio/mp3" />
-      </audio>
-      
-      <div id="chart" width="500" height="400"></div>
+    <audio controls loop id="myAudio">
+      <source src="Rooftop Lounge Cool Music.mp3" type="audio/mp3" />
+    </audio>
 
-    <script src="const.js"></script>  
+    <script src="const.js"></script>
 
     <script>
       function changeState(x) {
@@ -39,7 +37,13 @@
     <div class="containerH1">
       <h1>datAlcoolique groupe MMC</h1>
     </div>
-
+    <div id="chart" width="500" height="400"></div>
+    <div class="viz">
+      <p>Vodka 39%</p>
+      <p>Rum 9%</p>
+      <p>Gin 41%</p>
+      <p>Tequila 11%</p>
+    </div>
     <div class="containerBouton">
       <button class="button1" onclick="fetchCocktails('VODKA')">VODKA</button>
       <button class="button1" onclick="fetchCocktails('GIN')">GIN</button>
@@ -49,7 +53,10 @@
       </button>
     </div>
 
+    <div id="graphique"></div>
+
     <div id="cocktail"></div>
+
     <script src="./script.js"></script>
     <div id="page"></div>
 
